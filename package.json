@@ -18,11 +18,18 @@
   },
   "homepage": "https://github.com/bwpt-sauti-studio/Back-end#readme",
   "dependencies": {
+    "bcrypt": "^3.0.7",
     "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "jcrypt": "^1.0.0",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^0.20.8",
     "sqlite3": "^4.1.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "cross-env": "^7.0.0",
+    "jest": "^25.1.0",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
   }
 }
