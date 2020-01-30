@@ -14,6 +14,6 @@ server.use((err, req, res, next) => {
 
 if(!module.parent) {
     server.listen(PORT, () => {
-        console.log(`Server listening on port ${PORT}`)
+        console.log(`Server listening on port ${port}`)
     })
 }
