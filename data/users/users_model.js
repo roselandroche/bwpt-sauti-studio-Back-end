@@ -15,10 +15,16 @@ async function add(user) {
 function findById(id) {
     return db('users')
         .where({ id })
-        .first('id', 'name', 'email')
+        .first('id', 'username', 'email')
+}
+
+// findBy
+function findBy(filter) {
+    return db('users').where(filter)
 }
 
 module.exports = {
     add,
     findById,
+    findBy,
 }

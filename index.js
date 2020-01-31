@@ -1,5 +1,7 @@
 const express = require('express')
 
+// const usersRouter = require('./data/users/users_router')
+
 const server = express()
 const port = process.env.PORT || 4000
 
@@ -11,6 +13,8 @@ server.get('/', (req, res) => {
         message: `Welcome to the Sauti Studio Application!`
     })
 })
+
+// server.use('/api', usersRouter)
 
 server.use((err, req, res, next) => {
     console.log('Err:', err)
