@@ -3,6 +3,7 @@ const express = require('express')
 const usersModel = require('./users_model')
 const jwt = require('jsonwebtoken')
 const secrets = require('../config/secrets')
+const restricted = require('../middleware/restricted')
 
 const router = express.Router()
 

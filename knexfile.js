@@ -26,7 +26,7 @@ const sqlite3 = {
 
 module.exports = {
 
-  development: {
+  dev: {
     ...sqlite3,
     connection: {
       filename: './data/users.db3'
@@ -42,10 +42,10 @@ module.exports = {
     client: 'pg',
 		connection: dbConnection,
 		migrations: {
-			directory: './database/migrations'
+			directory: __dirname + '/database/migrations'
 		},
 		seeds: {
-			directory: './database/seeds'
+			directory: __dirname + '/database/seeds'
 		}
   }
 };
