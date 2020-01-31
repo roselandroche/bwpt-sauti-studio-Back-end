@@ -1,3 +1,13 @@
+const localPg = {
+	host: process.env.DB_HOST,
+	database: process.env.DB_NAME,
+	user: process.env.DB_USER,
+	password: process.env.DB_PASS
+};
+const pg = require('pg');
+pg.defaults.ssl = true;
+const dbConnection = process.env.DATABASE_URL || localPg;
+
 const sqlite3 = {
   client: 'sqlite3',
   useNullAsDefault: true,
@@ -22,5 +32,15 @@ module.exports = {
     connection: {
       filename: './data/usersTest.db3'
     }
+  },
+  production: {
+    client: 'pg',
+		connection: dbConnection,
+		migrations: {
+			directory: './database/migrations'
+		},
+		seeds: {
+			directory: './database/seeds'
+		}
   }
 };
