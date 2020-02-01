@@ -6,7 +6,7 @@ const localPg = {
 };
 const pg = require('pg');
 pg.defaults.ssl = true;
-const dbConnection = process.env.DATABASE_URL || localPg;
+const dbConnection = process.env.DB_URL || localPg;
 
 const sqlite3 = {
   client: 'sqlite3',
@@ -42,10 +42,10 @@ module.exports = {
     client: 'pg',
 		connection: dbConnection,
 		migrations: {
-			directory: __dirname + '/database/migrations'
+			directory: __dirname + '/data/migrations'
 		},
 		seeds: {
-			directory: __dirname + '/database/seeds'
+			directory: __dirname + '/data/seeds'
 		}
   }
 };
