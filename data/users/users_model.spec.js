@@ -6,6 +6,10 @@ beforeEach(async () => {
 })
 
 describe('users model', () => {
+    test('find', async () => {
+        const users = await usersModel.find()
+        expect(users).toHaveLength(3)
+    })
     test('add', async () => {
         await usersModel.add({ 
             username: 'Rose', 

@@ -45,6 +45,15 @@ router.post('/login', async (req, res, next) => {
     }
 })
 
-// 
+// see all users
+router.get('/users', restricted(), async (req, res, next) => {
+    try {
+        const users = await usersModel.find()
+        res.json(users)
+    }
+    catch (err) {
+        next(err)
+    }
+})
 
 module.exports = router
