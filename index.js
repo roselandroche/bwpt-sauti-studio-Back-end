@@ -14,7 +14,7 @@ server.get('/', (req, res) => {
     })
 })
 
-// server.use('/', usersRouter)
+server.use('/', usersRouter)
 
 server.use((err, req, res, next) => {
     console.log('Err:', err)
