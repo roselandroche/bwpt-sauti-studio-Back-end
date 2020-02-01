@@ -6,7 +6,7 @@ const localPg = {
 };
 const pg = require('pg');
 pg.defaults.ssl = true;
-const dbConnection = process.env.DB_URL || localPg;
+const dbConnection = process.env.DATABASE_URL || localPg;
 
 const sqlite3 = {
   client: 'sqlite3',
