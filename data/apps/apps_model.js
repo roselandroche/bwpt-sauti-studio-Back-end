@@ -1,8 +1,9 @@
 const db = require('../dbConfig')
 
 // dashboard, show all projects
-async function findProjects(id) {
-    
+async function findProjects(name) {
+    return db('projects')
+        .findBy({ username: name})
 }
 
 // add new project
@@ -13,4 +14,5 @@ async function findProjects(id) {
 
 module.exports = {
     // find, add, update, delete
+    findProjects,
 }
