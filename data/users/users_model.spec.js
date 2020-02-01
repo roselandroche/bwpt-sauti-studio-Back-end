@@ -19,4 +19,13 @@ describe('users model', () => {
         const allUsers = await db('users').select('id', 'username', 'email')
         expect(allUsers).toHaveLength(4)
     })
+    test('findById', async () => {
+        const first = await usersModel.findById(1)
+        expect(first.username).toBe('Izula')
+    })
+    test('findBy', async () => {
+        const name = await usersModel.findBy({ username: 'Mhambi' })
+        console.log(name)
+        expect(name.id).toBe(3)
+    })
 })
