@@ -12,6 +12,14 @@ const router = express.Router()
 // register
 router.post('/register', async (req, res, next) => {
     try {
+        const userExists = await usersModel.findBy({ username: req.body.username })
+        const emailExists = await usersModel.findBy({ email: req.body.email })
+        if(userExists) {
+            return res.status(400).json({ message: `User already exists` })
+        }
+        if(emailExists) {
+            return res.status(400).json({ message: `Email already exists` })
+        }
         const newUser = await usersModel.add(req.body)
         res.status(201).json(newUser)
     }
@@ -23,8 +31,9 @@ router.post('/register', async (req, res, next) => {
 // login
 router.post('/login', async (req, res, next) => {
     const { username, password } = req.body
-    console.log(username)
+    console.log(password)
     const user = await usersModel.findBy({ username }).first()
+    console.log(user)
     const passwordValid = await bcrypt.compare(password, user.password)
 
     if(user && passwordValid) {
