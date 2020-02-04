@@ -1,5 +1,6 @@
 const express = require('express')
 
+const getUserId = require('./data/middleware/getUserId')
 const usersRouter = require('./data/users/users_router')
 const appsRouter = require('./data/apps/apps_router')
 
@@ -16,7 +17,7 @@ server.get('/', (req, res) => {
 })
 
 server.use('/', usersRouter)
-server.use(`/user/:id`, appsRouter)
+server.use(`/user`, getUserId, appsRouter)
 
 server.use((err, req, res, next) => {
     console.log('Err:', err)

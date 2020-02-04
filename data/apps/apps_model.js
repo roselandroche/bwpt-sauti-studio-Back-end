@@ -1,9 +1,9 @@
 const db = require('../dbConfig')
 
 // dashboard, show all projects
-async function findProjects(name) {
+async function findProjects(id) {
     return db('projects')
-        .where({ username: name})
+        .where({ id })
 }
 
 // add new project

@@ -7,7 +7,7 @@ const router = express.Router()
 // routes
 router.get('/dashboard', async (req, res, next) => {
     try {
-        const dash = await appsModel.findProjects(res.body.username)
+        const dash = await appsModel.findProjects(req.userId)
         res.status(201).json(dash)
     }
     catch (err) {
