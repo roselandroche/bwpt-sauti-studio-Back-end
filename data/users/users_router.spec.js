@@ -55,10 +55,19 @@ describe('users router', () => {
                 .send({username: 'Brad', password: 'I am a YOUR MAMA Kind of Guy'});
             expect(response.status).toBe(401);
             expect(response.type).toBe('application/json');
+            expect(response.body.message).toBe(`User does not exist`)
+        })
+        it('Should return a 401 on unsuccessful login', async () => {
+            const response = await supertest(server)
+                .post("/login")
+                .send({username: 'Don', password: 'I am a YOUR MAMA Kind of Guy'});
+            expect(response.status).toBe(401);
+            expect(response.type).toBe('application/json');
+            expect(response.body.message).toBe(`Invalid credentials`)
         })
         it('Should return a token on successful Login', async () => {
             const response = await supertest(server)
-                .post("/api/auth/login")
+                .post("/login")
                 .send({
                     username: 'Don',
                     password: '123'
@@ -66,6 +75,15 @@ describe('users router', () => {
             expect(response.status).toBe(200);
             expect(response.type).toBe('application/json');
             expect(response.body.token).toBeTruthy();
+        })
+    })
+    describe('get all users', () => {
+        it('should get a list of users if logged in, return 200', async () => {
+            const res = await supertest(server).get('/users')
+            expect(res.status).toBe(200)
+            expect(res.type).toBe('application/json')
+            console.log(res.body)
+            // expect(res.body).toHaveLength()
         })
     })
 })

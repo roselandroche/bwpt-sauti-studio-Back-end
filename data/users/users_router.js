@@ -33,7 +33,9 @@ router.post('/login', async (req, res, next) => {
     const { username, password } = req.body
     console.log(password)
     const user = await usersModel.findBy({ username }).first()
-    console.log(user)
+    if(!user) {
+        return res.status(401).json({ message: `User does not exist` })
+    }
     const passwordValid = await bcrypt.compare(password, user.password)
 
     if(user && passwordValid) {
