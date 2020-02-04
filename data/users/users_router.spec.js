@@ -82,8 +82,6 @@ describe('users router', () => {
             const res = await supertest(server).get('/users')
             expect(res.status).toBe(200)
             expect(res.type).toBe('application/json')
-            console.log(res.body)
-            // expect(res.body).toHaveLength()
         })
     })
 })
