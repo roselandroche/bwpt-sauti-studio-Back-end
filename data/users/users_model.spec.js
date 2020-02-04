@@ -2,14 +2,11 @@ const db = require('../dbConfig')
 const usersModel = require('./users_model')
 
 beforeEach(async () => {
+    await db.truncate('users')
     await db.seed.run()
 })
 
 describe('users model', () => {
-    test('find', async () => {
-        const users = await usersModel.find()
-        expect(users).toHaveLength(3)
-    })
     test('add', async () => {
         await usersModel.add({ 
             username: 'Rose', 
@@ -18,6 +15,10 @@ describe('users model', () => {
         })
         const allUsers = await db('users').select('id', 'username', 'email')
         expect(allUsers).toHaveLength(4)
+    })
+    test('find', async () => {
+        const users = await usersModel.find()
+        expect(users).toHaveLength(1)
     })
     test('findById', async () => {
         const first = await usersModel.findById(1)

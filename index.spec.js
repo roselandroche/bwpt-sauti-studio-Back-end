@@ -1,6 +1,5 @@
 const supertest = require('supertest')
 const server = require('./index')
-// const db = require('./data/dbConfig')
 
 test('welcome', async () => {
     const res = await supertest(server).get('/')
