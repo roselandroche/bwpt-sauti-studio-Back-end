@@ -3,10 +3,11 @@ const db = require('../dbConfig')
 // dashboard, show all projects
 async function findProjects(name) {
     return db('projects')
-        .findBy({ username: name})
+        .where({ username: name})
 }
 
 // add new project
+
 
 // edit project
 
