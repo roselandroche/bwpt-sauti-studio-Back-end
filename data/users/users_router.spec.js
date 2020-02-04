@@ -79,8 +79,18 @@ describe('users router', () => {
     })
     describe('get all users', () => {
         it('should get a list of users if logged in, return 200', async () => {
-            const res = await supertest(server).get('/users')
+            const user = await supertest(server).post('/login').send({
+                username: `Don`,
+                password: '123'
+            })
+            const { token } = user.body
+            const res = await supertest(server).get('/users').set('authorization', token)
             expect(res.status).toBe(200)
+            expect(res.type).toBe('application/json')
+        })
+        it('should not get a list of users if not logged in, return 401', async () => {
+            const res = await supertest(server).get('/users')
+            expect(res.status).toBe(401)
             expect(res.type).toBe('application/json')
         })
     })
