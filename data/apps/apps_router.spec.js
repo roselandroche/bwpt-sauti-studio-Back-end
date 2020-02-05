@@ -5,6 +5,7 @@ const db = require('../dbConfig')
 beforeAll(async () => {
     console.log(`called`)
     await db.truncate('users')
+    await db.seed.run()
 })
 
 describe('projects router', () => {
