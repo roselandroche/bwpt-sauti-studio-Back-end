@@ -4,6 +4,7 @@ const usersModel = require('./users_model')
 const jwt = require('jsonwebtoken')
 const secrets = require('../config/secrets')
 const restricted = require('../middleware/restricted')
+const db = require('../dbConfig')
 
 const router = express.Router()
 
@@ -31,8 +32,9 @@ router.post('/register', async (req, res, next) => {
 // login
 router.post('/login', async (req, res, next) => {
     const { username, password } = req.body
-    console.log(password)
-    const user = await usersModel.findBy({ username }).first()
+    
+    const user = await usersModel.findBy({ username })
+    
     if(!user) {
         return res.status(401).json({ message: `User does not exist` })
     }
