@@ -7,18 +7,23 @@ function allProjects(userId) {
 }
 
 // find by id
-function findProjectById() {
-
+function findProjectById(userId, projectId) {
+    return db('projects')
+        .where({ user_id: userId, id: projectId })
 }
 
 // add new project
-async function addProject(id) {
-
+async function addProject(newProject) {
+    const [id] = await db('projects').insert(newProject)
+    return db('projects').where({ id }).first()
 }
 
 // edit project
-async function editProject(changes, id) {
-
+async function editProject(updates, id) {
+    await db('projects')
+        .where({ id })
+        .update(updates)
+    return findProjectById(id)
 }
 
 // delete project
