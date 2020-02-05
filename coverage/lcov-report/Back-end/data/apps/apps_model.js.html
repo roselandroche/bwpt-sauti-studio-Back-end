@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.67% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>2/8</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.67% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>2/8</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -92,7 +92,12 @@
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -102,17 +107,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -130,24 +140,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const db = require('../dbConfig')
 &nbsp;
 // dashboard, show all projects
-function <span class="fstat-no" title="function not covered" >allProjects(</span>id) {
+function <span class="fstat-no" title="function not covered" >allProjects(</span>userId) {
 <span class="cstat-no" title="statement not covered" >    return db('projects')</span>
-        .where({ id })
+        .where({ user_id: userId })
 }
 &nbsp;
 // find by id
-function <span class="fstat-no" title="function not covered" >findProjectById(</span>) {
-    
+function <span class="fstat-no" title="function not covered" >findProjectById(</span>userId, projectId) {
+<span class="cstat-no" title="statement not covered" >    return db('projects')</span>
+        .where({ user_id: userId, id: projectId })
 }
 &nbsp;
 // add new project
-async function <span class="fstat-no" title="function not covered" >addProject(</span>id) {
-&nbsp;
+async function <span class="fstat-no" title="function not covered" >addProject(</span>newProject) {
+    const [id] = <span class="cstat-no" title="statement not covered" >await db('projects').insert(newProject)</span>
+<span class="cstat-no" title="statement not covered" >    return db('projects').where({ id }).first()</span>
 }
 &nbsp;
 // edit project
-async function <span class="fstat-no" title="function not covered" >editProject(</span>changes, id) {
-&nbsp;
+async function <span class="fstat-no" title="function not covered" >editProject(</span>updates, id) {
+<span class="cstat-no" title="statement not covered" >    await db('projects')</span>
+        .where({ id })
+        .update(updates)
+<span class="cstat-no" title="statement not covered" >    return findProjectById(id)</span>
 }
 &nbsp;
 // delete project
@@ -169,7 +184,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Feb 04 2020 19:33:22 GMT-0500 (Eastern Standard Time)
+                at Tue Feb 04 2020 20:55:06 GMT-0500 (Eastern Standard Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>
