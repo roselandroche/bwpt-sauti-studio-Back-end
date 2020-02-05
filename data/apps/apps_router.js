@@ -35,14 +35,33 @@ router.get('/dashboard/:id', async (req, res, next) => {
 // edit one project
 router.put('/dashboard/:id', async (req, res, next) => {
     try {
-        const { id } = req.params
+        const { projectId } = req.params
         const updates = req.body
-        const toUpdate = await appsModel.findProjectById(id)
+        const toUpdate = await appsModel.findProjectById(projectId)
         if(toUpdate) {
-            const updated = await appsModel.update(updates, id)
+            const updated = await appsModel.update(updates, projectId, req.userId)
             res.json(updated)
         }
         res.status(404).json({ message: `Project does not exist` })
+    }
+    catch (err) {
+        next(err)
+    }
+})
+
+// delete project
+router.delete('/dashboard/:id', async (req, res, next) => {
+    try {
+        const { id } = req.params
+        const deleted = await appsModel.remove(id)
+        if(deleted) {
+            res.status(204).json({
+                message: `Successfully deleted.`
+            })
+        }
+        res.status(404).json({
+            message: `Cannot delete projects that do not exist`
+        })
     }
     catch (err) {
         next(err)

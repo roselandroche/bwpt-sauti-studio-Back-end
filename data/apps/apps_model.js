@@ -12,23 +12,23 @@ function findProjectById(userId, projectId) {
         .where({ user_id: userId, id: projectId })
 }
 
+// edit project
+async function editProject(updates, id, userId) {
+    await db('projects')
+        .where({ id })
+        .update(updates)
+    return findProjectById(userId, id)
+}
+
 // add new project
 async function addProject(newProject) {
     const [id] = await db('projects').insert(newProject)
     return db('projects').where({ id }).first()
 }
 
-// edit project
-async function editProject(updates, id) {
-    await db('projects')
-        .where({ id })
-        .update(updates)
-    return findProjectById(id)
-}
-
 // delete project
 function remove(id) {
-
+    return db('projects').where({ id }).del()
 }
 
 module.exports = {
