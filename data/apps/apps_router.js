@@ -5,7 +5,7 @@ const restricted = require('../middleware/restricted')
 const router = express.Router()
 
 // get all projects
-router.get('/dashboard', restricted(), async (req, res, next) => {
+router.get('/', restricted(), async (req, res, next) => {
     try {
         const dash = await appsModel.allProjects(req.userId)
         res.status(201).json(dash)
@@ -16,7 +16,7 @@ router.get('/dashboard', restricted(), async (req, res, next) => {
 })
 
 // get one project
-router.get('/dashboard/:id', restricted(), async (req, res, next) => {
+router.get('/:id', restricted(), async (req, res, next) => {
     try{
         const { id } = req.params
         const oneProject = await appsModel.findProjectById(id)
@@ -33,7 +33,7 @@ router.get('/dashboard/:id', restricted(), async (req, res, next) => {
 })
 
 // edit one project
-router.put('/dashboard/:id', restricted(), async (req, res, next) => {
+router.put('/:id', restricted(), async (req, res, next) => {
     try {
         const { id } = req.params
         const updates = req.body
@@ -50,7 +50,7 @@ router.put('/dashboard/:id', restricted(), async (req, res, next) => {
 })
 
 // delete project
-router.delete('/dashboard/:id', restricted(), async (req, res, next) => {
+router.delete('/:id', restricted(), async (req, res, next) => {
     try {
         const { id } = req.params
         const deleted = await appsModel.remove(id)
@@ -69,7 +69,7 @@ router.delete('/dashboard/:id', restricted(), async (req, res, next) => {
 })
 
 // create new project
-router.post('/dashboard/new', restricted(), async (req, res, next) => {
+router.post('/new', restricted(), async (req, res, next) => {
     try {
         const toAdd = req.body
         const added = await appsModel.addProject(toAdd)
