@@ -5,7 +5,7 @@ const restricted = require('../middleware/restricted')
 const router = express.Router()
 
 // get all projects
-router.get('/dashboard', async (req, res, next) => {
+router.get('/dashboard', restricted(), async (req, res, next) => {
     try {
         const dash = await appsModel.allProjects(req.userId)
         res.status(201).json(dash)
@@ -16,12 +16,12 @@ router.get('/dashboard', async (req, res, next) => {
 })
 
 // get one project
-router.get('/dashboard/:id', async (req, res, next) => {
+router.get('/dashboard/:id', restricted(), async (req, res, next) => {
     try{
         const { id } = req.params
-        const oneProject = await appsModel.findProjectById(id, req.userId)
+        const oneProject = await appsModel.findProjectById(id)
         if(oneProject) {
-            res.status(201).json(oneProject)
+            return res.status(200).json(oneProject)
         }
         res.status(404).json({
             message: `Project does not exist`
@@ -33,14 +33,14 @@ router.get('/dashboard/:id', async (req, res, next) => {
 })
 
 // edit one project
-router.put('/dashboard/:id', async (req, res, next) => {
+router.put('/dashboard/:id', restricted(), async (req, res, next) => {
     try {
-        const { projectId } = req.params
+        const { id } = req.params
         const updates = req.body
-        const toUpdate = await appsModel.findProjectById(projectId)
+        const toUpdate = await appsModel.findProjectById(id)
         if(toUpdate) {
-            const updated = await appsModel.update(updates, projectId, req.userId)
-            res.json(updated)
+            const updated = await appsModel.editProject(updates, id)
+            return res.json(updated)
         }
         res.status(404).json({ message: `Project does not exist` })
     }
@@ -50,7 +50,7 @@ router.put('/dashboard/:id', async (req, res, next) => {
 })
 
 // delete project
-router.delete('/dashboard/:id', async (req, res, next) => {
+router.delete('/dashboard/:id', restricted(), async (req, res, next) => {
     try {
         const { id } = req.params
         const deleted = await appsModel.remove(id)
@@ -69,7 +69,7 @@ router.delete('/dashboard/:id', async (req, res, next) => {
 })
 
 // create new project
-router.post('/dashboard/new', async (req, res, next) => {
+router.post('/dashboard/new', restricted(), async (req, res, next) => {
     try {
         const toAdd = req.body
         const added = await appsModel.addProject(toAdd)
