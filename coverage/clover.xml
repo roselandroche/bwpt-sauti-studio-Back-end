@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1580867706089" clover="3.2.0">
-  <project timestamp="1580867706089" name="All files">
-    <metrics statements="136" coveredstatements="79" conditionals="26" coveredconditionals="16" methods="23" coveredmethods="7" elements="185" coveredelements="102" complexity="0" loc="136" ncloc="136" packages="6" files="10" classes="10"/>
+<coverage generated="1580868130131" clover="3.2.0">
+  <project timestamp="1580868130135" name="All files">
+    <metrics statements="136" coveredstatements="93" conditionals="26" coveredconditionals="18" methods="23" coveredmethods="11" elements="185" coveredelements="122" complexity="0" loc="136" ncloc="136" packages="6" files="10" classes="10"/>
     <package name="Back-end">
       <metrics statements="25" coveredstatements="21" conditionals="6" coveredconditionals="5" methods="4" coveredmethods="2"/>
       <file name="index.js" path="/Users/Rose/Desktop/lambda/git/Back-end/index.js">
@@ -105,7 +105,7 @@
       </file>
     </package>
     <package name="Back-end.data.middleware">
-      <metrics statements="20" coveredstatements="12" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="2"/>
+      <metrics statements="20" coveredstatements="14" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="2"/>
       <file name="getUserId.js" path="/Users/Rose/Desktop/lambda/git/Back-end/data/middleware/getUserId.js">
         <metrics statements="9" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="3" type="stmt"/>
@@ -119,36 +119,36 @@
         <line num="15" count="3" type="stmt"/>
       </file>
       <file name="restricted.js" path="/Users/Rose/Desktop/lambda/git/Back-end/data/middleware/restricted.js">
-        <metrics statements="11" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="1" count="3" type="stmt"/>
         <line num="2" count="3" type="stmt"/>
         <line num="4" count="3" type="stmt"/>
         <line num="5" count="3" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
       </file>
     </package>
     <package name="Back-end.data.users">
-      <metrics statements="44" coveredstatements="30" conditionals="10" coveredconditionals="8" methods="7" coveredmethods="3"/>
+      <metrics statements="44" coveredstatements="42" conditionals="10" coveredconditionals="10" methods="7" coveredmethods="7"/>
       <file name="users_model.js" path="/Users/Rose/Desktop/lambda/git/Back-end/data/users/users_model.js">
-        <metrics statements="9" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
+        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
         <line num="1" count="3" type="stmt"/>
         <line num="2" count="3" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
         <line num="28" count="12" type="stmt"/>
         <line num="31" count="3" type="stmt"/>
       </file>
       <file name="users_router.js" path="/Users/Rose/Desktop/lambda/git/Back-end/data/users/users_router.js">
-        <metrics statements="35" coveredstatements="26" conditionals="10" coveredconditionals="8" methods="3" coveredmethods="2"/>
+        <metrics statements="35" coveredstatements="33" conditionals="10" coveredconditionals="10" methods="3" coveredmethods="3"/>
         <line num="1" count="3" type="stmt"/>
         <line num="2" count="3" type="stmt"/>
         <line num="3" count="3" type="stmt"/>
@@ -162,26 +162,26 @@
         <line num="16" count="3" type="stmt"/>
         <line num="17" count="3" type="stmt"/>
         <line num="18" count="3" type="cond" truecount="2" falsecount="0"/>
-        <line num="19" count="2" type="stmt"/>
-        <line num="21" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="21" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="22" count="1" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
         <line num="33" count="3" type="stmt"/>
         <line num="34" count="6" type="stmt"/>
         <line num="36" count="6" type="stmt"/>
         <line num="38" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="39" count="1" type="stmt"/>
-        <line num="41" count="5" type="stmt"/>
-        <line num="43" count="5" type="cond" truecount="3" falsecount="1"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="56" count="5" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="41" count="4" type="stmt"/>
+        <line num="43" count="4" type="cond" truecount="4" falsecount="0"/>
+        <line num="44" count="3" type="stmt"/>
+        <line num="51" count="3" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
         <line num="63" count="3" type="stmt"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="65" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
         <line num="69" count="0" type="stmt"/>
         <line num="73" count="3" type="stmt"/>
       </file>

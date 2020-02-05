@@ -4,6 +4,5 @@ exports.seed = async (knex) => {
     { username: 'Izula', password: 'abc', email: 'izula@gmail.com' },
     { username: 'Ayanda', password: '123', email: 'ayanda@gmail.com' },
     { username: 'Mhambi', password: 'abc123', email: 'mhambi@gmail.com' },
-    { username: 'Don', password: '123', email: 'don@gmail.com' }
   ])
 };
