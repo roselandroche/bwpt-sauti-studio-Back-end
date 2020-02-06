@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.47% </span>
+                <span class="strong">30.95% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/34</span>
+                <span class='fraction'>13/42</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>1/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.47% </span>
+                <span class="strong">30.95% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/34</span>
+                <span class='fraction'>13/42</span>
             </div>
         
             
@@ -122,7 +122,26 @@
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -130,9 +149,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -167,6 +186,25 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -194,10 +232,10 @@ const restricted = require('../middleware/restricted')
 const router = express.Router()
 &nbsp;
 // get all projects
-router.get('/dashboard', <span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {
-<span class="cstat-no" title="statement not covered" >    try {</span>
-        const dash = <span class="cstat-no" title="statement not covered" >await appsModel.allProjects(req.userId)</span>
-<span class="cstat-no" title="statement not covered" >        res.status(201).json(dash)</span>
+router.get('/', restricted(), async (req, res, next) =&gt; {
+    try {
+        const dash = await appsModel.allProjects(req.userId)
+        res.status(200).json(dash)
     }
     catch (err) {
 <span class="cstat-no" title="statement not covered" >        next(err)</span>
@@ -205,12 +243,12 @@ router.get('/dashboard', <span class="fstat-no" title="function not covered" >as
 })
 &nbsp;
 // get one project
-router.get('/dashboard/:id', <span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {
+router.get('/:id', restricted(), <span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {
 <span class="cstat-no" title="statement not covered" >    try{</span>
         const { id } = <span class="cstat-no" title="statement not covered" >req.params</span>
-        const oneProject = <span class="cstat-no" title="statement not covered" >await appsModel.findProjectById(id, req.userId)</span>
+        const oneProject = <span class="cstat-no" title="statement not covered" >await appsModel.findProjectById(id)</span>
 <span class="cstat-no" title="statement not covered" >        if(oneProject) {</span>
-<span class="cstat-no" title="statement not covered" >            res.status(201).json(oneProject)</span>
+<span class="cstat-no" title="statement not covered" >            return res.status(200).json(oneProject)</span>
         }
 <span class="cstat-no" title="statement not covered" >        res.status(404).json({</span>
             message: `Project does not exist`
@@ -222,14 +260,14 @@ router.get('/dashboard/:id', <span class="fstat-no" title="function not covered"
 })
 &nbsp;
 // edit one project
-router.put('/dashboard/:id', <span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {
+router.put('/:id', restricted(), <span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {
 <span class="cstat-no" title="statement not covered" >    try {</span>
         const { id } = <span class="cstat-no" title="statement not covered" >req.params</span>
         const updates = <span class="cstat-no" title="statement not covered" >req.body</span>
         const toUpdate = <span class="cstat-no" title="statement not covered" >await appsModel.findProjectById(id)</span>
 <span class="cstat-no" title="statement not covered" >        if(toUpdate) {</span>
-            const updated = <span class="cstat-no" title="statement not covered" >await appsModel.update(updates, id)</span>
-<span class="cstat-no" title="statement not covered" >            res.json(updated)</span>
+            const updated = <span class="cstat-no" title="statement not covered" >await appsModel.editProject(updates, id)</span>
+<span class="cstat-no" title="statement not covered" >            return res.json(updated)</span>
         }
 <span class="cstat-no" title="statement not covered" >        res.status(404).json({ message: `Project does not exist` })</span>
     }
@@ -238,8 +276,27 @@ router.put('/dashboard/:id', <span class="fstat-no" title="function not covered"
     }
 })
 &nbsp;
+// delete project
+router.delete('/:id', restricted(), <span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {
+<span class="cstat-no" title="statement not covered" >    try {</span>
+        const { id } = <span class="cstat-no" title="statement not covered" >req.params</span>
+        const deleted = <span class="cstat-no" title="statement not covered" >await appsModel.remove(id)</span>
+<span class="cstat-no" title="statement not covered" >        if(deleted) {</span>
+<span class="cstat-no" title="statement not covered" >            res.status(204).json({</span>
+                message: `Successfully deleted.`
+            })
+        }
+<span class="cstat-no" title="statement not covered" >        res.status(404).json({</span>
+            message: `Cannot delete projects that do not exist`
+        })
+    }
+    catch (err) {
+<span class="cstat-no" title="statement not covered" >        next(err)</span>
+    }
+})
+&nbsp;
 // create new project
-router.post('/dashboard/new', <span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {
+router.post('/new', restricted(), <span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {
 <span class="cstat-no" title="statement not covered" >    try {</span>
         const toAdd = <span class="cstat-no" title="statement not covered" >req.body</span>
         const added = <span class="cstat-no" title="statement not covered" >await appsModel.addProject(toAdd)</span>
@@ -259,7 +316,7 @@ module.exports = router</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Feb 04 2020 21:02:10 GMT-0500 (Eastern Standard Time)
+                at Wed Feb 05 2020 19:10:33 GMT-0500 (Eastern Standard Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>
