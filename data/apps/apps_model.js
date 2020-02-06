@@ -6,7 +6,7 @@ function allProjects(userId) {
         .where({ user_id: userId })
 }
 
-// find by id
+// find project by id
 function findProjectById(id) {
     return db('projects')
         .where({ id })
@@ -32,6 +32,20 @@ function remove(id) {
     return db('projects').where({ id }).del()
 }
 
+// get all project steps
+function allSteps(userId) {
+    return db('project_steps')
+        .where({ user_id: userId })
+}
+
+// get one step
+
+// edit one step
+
+// delete one step
+
+// add new step
+
 module.exports = {
     // find, add, update, delete
     allProjects,
@@ -39,4 +53,5 @@ module.exports = {
     addProject,
     editProject,
     remove,
+    allSteps,
 }

@@ -1,5 +1,6 @@
 const express = require('express')
 const appsModel = require('./apps_model')
+// const stepsModel = require('../project_steps/steps_model');
 const restricted = require('../middleware/restricted')
 
 const router = express.Router()
@@ -80,6 +81,15 @@ router.post('/new', restricted(), async (req, res, next) => {
     }
 })
 
-
+// get all steps
+router.get('/:id/steps', restricted(), async (req, res, next) => {
+    try {
+        const steps = await appsModel.allSteps(req.userId)
+        res.status(200).json(steps)
+    }
+    catch (err) {
+        next(err)
+    }
+})
 
 module.exports = router
