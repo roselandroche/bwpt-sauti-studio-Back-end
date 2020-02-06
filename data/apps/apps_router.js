@@ -8,7 +8,7 @@ const router = express.Router()
 router.get('/', restricted(), async (req, res, next) => {
     try {
         const dash = await appsModel.allProjects(req.userId)
-        res.status(201).json(dash)
+        res.status(200).json(dash)
     }
     catch (err) {
         next(err)
