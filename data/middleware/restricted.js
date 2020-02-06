@@ -11,7 +11,6 @@ module.exports = () => {
             next()
         }
         catch (err) {
-            console.log(err)
             return res.status(401).json({
                 message: `You must be logged in to view this resource`
             })

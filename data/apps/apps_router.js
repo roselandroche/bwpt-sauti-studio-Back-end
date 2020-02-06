@@ -56,7 +56,7 @@ router.delete('/:id', restricted(), async (req, res, next) => {
         const { id } = req.params
         const deleted = await appsModel.remove(id)
         if(deleted) {
-            res.status(204).json({
+            return res.status(204).json({
                 message: `Successfully deleted.`
             })
         }
