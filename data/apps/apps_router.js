@@ -1,6 +1,6 @@
 const express = require('express')
 const appsModel = require('./apps_model')
-// const stepsModel = require('../project_steps/steps_model');
+const stepsModel = require('../project_steps/steps_model');
 const restricted = require('../middleware/restricted')
 
 const router = express.Router()
@@ -86,7 +86,7 @@ router.post('/new', restricted(), async (req, res, next) => {
 router.get('/:project_id/steps', restricted(), async (req, res, next) => {
     try {
         const projectId = req.params.project_id
-        const steps = await appsModel.allSteps(projectId)
+        const steps = await stepsModel.allSteps(projectId)
         if(!steps) {
             return res.status(404).json({ 
                 message: `There are no steps for this project`
@@ -103,7 +103,7 @@ router.get('/:project_id/steps', restricted(), async (req, res, next) => {
 router.get('/:project_id/steps/:step_id', restricted(), async (req, res, next) => {
     try{
         const stepId = req.params.step_id
-        const oneStep = await appsModel.findStepById(stepId)
+        const oneStep = await stepsModel.findStepById(stepId)
         if(oneStep) {
             return res.status(200).json(oneStep)
         }
@@ -120,7 +120,7 @@ router.get('/:project_id/steps/:step_id', restricted(), async (req, res, next) =
 router.post('/:project_id/steps', restricted(), async (req, res, next) => {
     try {
         const stepToAdd = req.body
-        const addedStep = await appsModel.addStep(stepToAdd)
+        const addedStep = await stepsModel.addStep(stepToAdd)
         return res.status(201).json(addedStep)
     }
     catch (err) {
@@ -133,9 +133,9 @@ router.put('/:project_id/steps/:step_id', restricted(), async (req, res, next) =
     try {
         const stepId = req.params.step_id
         const updates = req.body
-        const toUpdate = await appsModel.findStepById(stepId)
+        const toUpdate = await stepsModel.findStepById(stepId)
         if(toUpdate) {
-            const updated = await appsModel.editStep(updates, stepId)
+            const updated = await stepsModel.editStep(updates, stepId)
             return res.json(updated)
         }
         return res.status(404).json({ message: `Step does not exist` })
@@ -148,7 +148,7 @@ router.put('/:project_id/steps/:step_id', restricted(), async (req, res, next) =
 router.delete('/:project_id/steps/:step_id', restricted(), async (req, res, next) => {
     try {
         const stepId = req.params.step_id
-        const deleted = await appsModel.remove(stepId)
+        const deleted = await stepsModel.removeStep(stepId)
         if(deleted) {
             return res.status(204).json({
                 message: `Successfully deleted.`
