@@ -34,24 +34,37 @@ function remove(id) {
 
 // get all project steps
 function allSteps(userId) {
-    return db('project_steps')
-        .where({ user_id: userId })
+    db('project_steps as p_s')
+        .join('projects as p', 'p_s.project_id', 'p.id')
+        .select('p.project_name', 'p_s.id', 'p_s.step_name', 'p_s.description')
+        .orderBy('p.project_name', 'p_s.id')
+        .where({ user_id: userId})
 }
 
 // get one step
+function findStepById(id) {
+    return db('project_steps')
+        .where({ id })
+        .first()
+}
 
 // edit one step
 
 // delete one step
 
 // add new step
+async function addStep(newStep) {
+    const [id] = await db('project_steps').insert(newStep)
+    return db('project_steps').where({ id }).first()
+}
 
 module.exports = {
-    // find, add, update, delete
     allProjects,
     findProjectById,
     addProject,
     editProject,
     remove,
     allSteps,
+    findStepById,
+    addStep,
 }

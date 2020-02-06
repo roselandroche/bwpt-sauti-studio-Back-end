@@ -85,7 +85,34 @@ router.post('/new', restricted(), async (req, res, next) => {
 router.get('/:id/steps', restricted(), async (req, res, next) => {
     try {
         const steps = await appsModel.allSteps(req.userId)
+        if(!steps) {
+            return res.status(404).json({ 
+                message: `There are no steps for this project`
+            })
+        }
         res.status(200).json(steps)
+    }
+    catch (err) {
+        next(err)
+    }
+})
+
+// find step by id
+router.get('/:id/steps/:id', restricted(), async (req, res, next) => {
+    try {
+        
+    }
+    catch (err) {
+        next(err)
+    }
+})
+
+// add a step
+router.post('/:id/steps', restricted(), async (req, res, next) => {
+    try {
+        const stepToAdd = req.body
+        const addedStep = await appsModel.addStep(stepToAdd)
+        res.status(201).json(addedStep)
     }
     catch (err) {
         next(err)
