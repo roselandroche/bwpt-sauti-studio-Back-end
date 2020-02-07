@@ -14,11 +14,11 @@ function findStepById(id) {
 }
 
 // edit one step
-async function editStep(updates, id) {
-    await db('project_steps')
+function editStep(updates, id) {
+    return db('project_steps')
         .where({ id })
         .update(updates)
-    return findStepById(id)
+        .returning('*')
 }
 
 // delete one step
@@ -27,9 +27,8 @@ function removeStep(id) {
 }
 
 // add new step
-async function addStep(newStep) {
-    const [id] = await db('project_steps').insert(newStep)
-    return db('project_steps').where({ id }).first()
+function addStep(newStep) {
+    return db('project_steps').insert(newStep).returning('*')
 }
 
 module.exports = {

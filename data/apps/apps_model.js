@@ -14,17 +14,16 @@ function findProjectById(id) {
 }
 
 // edit project
-async function editProject(updates, id) {
-    await db('projects')
+function editProject(updates, id) {
+    return db('projects')
         .where({ id })
         .update(updates)
-    return findProjectById(id)
+        .returning('*')
 }
 
 // add new project
-async function addProject(newProject) {
-    const [id] = await db('projects').insert(newProject)
-    return db('projects').where({ id }).first()
+function addProject(newProject) {
+    return db('projects').insert(newProject).returning('*')
 }
 
 // delete project
