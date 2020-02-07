@@ -9,11 +9,7 @@ function find() {
 // add
 async function add(user) {
     user.password = await bcrypt.hash(user.password, 10)
-    console.log(user)
-    const [id] = await db('users')
-        .insert(user)
-
-    return findById(id)
+    return db('users').insert(user).returning('*')
 }
 
 // findById
