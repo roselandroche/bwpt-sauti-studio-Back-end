@@ -21,11 +21,11 @@ router.post('/register', async (req, res, next) => {
         if(emailExists) {
             return res.status(400).json({ message: `Email already exists` })
         }
+        console.log(req.body)
         const newUser = await usersModel.add(req.body)
         res.status(201).json(newUser)
     }
     catch (err) {
-        console.log(err)
         next(err)
     }
 })
