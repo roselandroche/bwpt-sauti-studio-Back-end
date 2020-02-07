@@ -73,6 +73,7 @@ router.delete('/:id', restricted(), async (req, res, next) => {
 router.post('/new', restricted(), async (req, res, next) => {
     try {
         const toAdd = req.body
+        console.log(toAdd)
         const added = await appsModel.addProject(toAdd)
         return res.status(201).json(added)
     }

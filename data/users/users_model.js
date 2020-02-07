@@ -8,7 +8,7 @@ function find() {
 }
 // add
 async function add(user) {
-    user.password = await bcrypt.hash(user.password, 10)
+    user.password = await bcrypt.hash(user.password, 13)
     return db('users').insert(user).returning('*')
 }
 
