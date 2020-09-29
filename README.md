@@ -16,8 +16,7 @@ Complete.
 
 ### Tech Stack
 
-Node | JavaScript | PostgreSQL | SQLite3
-Testing via Supertest
+Node | JavaScript | PostgreSQL | SQLite3 | Supertest
 
 ### Deployment
 
