@@ -16,4 +16,9 @@ Complete.
 
 ### Tech Stack
 
-Node | JavaScript 
+Node | JavaScript | PostgreSQL | SQLite3
+Testing via Supertest
+
+### Deployment
+
+https://build-iv-sauti-studio.herokuapp.com/
